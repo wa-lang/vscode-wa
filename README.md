@@ -1,6 +1,6 @@
-<sub><em>Layered Comments for VS Code</em></sub>
+<sub><em>Wa Lang for VS Code</em></sub>
 <h1 align="center">
-  LOGO
+  <img src="./assets/logo.png" height="100">
 </h1>
 
 

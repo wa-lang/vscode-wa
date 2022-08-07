@@ -1,0 +1,134 @@
+{
+  "scopeName": "source.wa",
+  "fileTypes": [
+    "wa"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#support"
+    },
+    {
+      "include": "#variables"
+    }
+  ],
+  "repository": {
+    "variables": {
+      "patterns": []
+    },
+    "keywords": {
+      "patterns": []
+    },
+    "operators": {
+      "patterns": []
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.documentation.wa",
+          "begin": "//[!/](?=[^/])",
+          "end": "$",
+          "patterns": [
+            {
+              "include": "#commentContents"
+            }
+          ]
+        },
+        {
+          "name": "comment.line.double-slash.wa",
+          "begin": "//",
+          "end": "$",
+          "patterns": [
+            {
+              "include": "#commentContents"
+            }
+          ]
+        }
+      ]
+    },
+    "commentContents": {
+      "patterns": [
+        {
+          "match": "\\b(TODO|FIXME|NOTE|INFO|IDEA|CHANGED|BUG|HACK)\\b:?",
+          "name": "keyword.todo.wa"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.wa",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "include": "#stringcontent"
+            }
+          ]
+        },
+        {
+          "name": "string.multiline.wa",
+          "begin": "\\\\\\\\",
+          "end": "$"
+        },
+        {
+          "name": "string.quoted.single.wa",
+          "match": "'([^'\\\\]|\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.))'"
+        }
+      ]
+    },
+    "stringcontent": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.wa",
+          "match": "\\\\([nrt'\"\\\\]|(x[0-9a-fA-F]{2})|(u\\{[0-9a-fA-F]+\\}))"
+        },
+        {
+          "name": "invalid.illegal.unrecognized-string-escape.wa",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.wa",
+          "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.wa",
+          "match": "\\b[0-9][0-9_]*\\b"
+        },
+        {
+          "name": "constant.numeric.hexadecimal.wa",
+          "match": "\\b0x[a-fA-F0-9_]+\\b"
+        },
+        {
+          "name": "constant.numeric.octal.wa",
+          "match": "\\b0o[0-7_]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.wa",
+          "match": "\\b0b[01_]+\\b"
+        }
+      ]
+    },
+    "support": {
+      "patterns": []
+    }
+  }
+}

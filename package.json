@@ -24,13 +24,33 @@
     "vscode": "^1.66.2"
   },
   "contributes": {
+    "languages": [
+      {
+        "id": "wa",
+        "extensions": [
+          ".wa"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./assets/wa.svg",
+          "dark": "./assets/wa.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "wa",
+        "scopeName": "source.wa",
+        "path": "./syntaxes/wa.tmLanguage.json"
+      }
+    ],
     "commands": [],
     "keybindings": [],
     "configuration": {
       "properties": {}
     }
   },
-  "icon": "",
+  "icon": "assets/logo.png",
   "scripts": {
     "dev": "rm -rf dist && tsup --watch",
     "build": "tsup",

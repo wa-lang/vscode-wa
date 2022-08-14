@@ -1,7 +1,7 @@
 {
   "name": "vscode-wa",
-  "displayName": "vscode-wa",
-  "version": "0.0.0",
+  "displayName": "Wa",
+  "version": "0.0.1",
   "description": "Wa Lang for VS Code",
   "publisher": "xxxDeveloper",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
@@ -30,11 +30,7 @@
         "extensions": [
           ".wa"
         ],
-        "configuration": "./language-configuration.json",
-        "icon": {
-          "light": "./assets/wa.svg",
-          "dark": "./assets/wa.svg"
-        }
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [

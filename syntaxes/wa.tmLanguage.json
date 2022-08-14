@@ -26,7 +26,92 @@
   ],
   "repository": {
     "variables": {
-      "patterns": []
+      "patterns": [
+        {
+          "name": "meta.function.declaration.wa",
+          "patterns": [
+            {
+              "match": "\\b(fn|函数)\\s+([A-Z][a-zA-Z0-9]*)\\b",
+              "captures": {
+                "1": {
+                  "name": "storage.type.function.wa"
+                },
+                "2": {
+                  "name": "entity.name.type.wa"
+                }
+              }
+            },
+            {
+              "match": "\\b(fn|函数)\\s+([_a-zA-Z][_a-zA-Z0-9]*)\\b",
+              "captures": {
+                "1": {
+                  "name": "storage.type.function.wa"
+                },
+                "2": {
+                  "name": "entity.name.function.wa"
+                }
+              }
+            },
+            {
+              "begin": "\\b(fn|函数)\\s+",
+              "end": "\"",
+              "name": "entity.name.function.wa",
+              "beginCaptures": {
+                "1": {
+                  "name": "storage.type.function.wa"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "#stringcontent"
+                }
+              ]
+            },
+            {
+              "name": "keyword.default.wa",
+              "match": "\\b(const|var|fn|常量|变量|函数)\\b"
+            }
+          ]
+        },
+        {
+          "name": "meta.function.call.wa",
+          "patterns": [
+            {
+              "match": "([A-Z][a-zA-Z0-9]*)(?=\\s*\\()",
+              "name": "entity.name.type.wa"
+            },
+            {
+              "match": "([_a-zA-Z][_a-zA-Z0-9]*)(?=\\s*\\()",
+              "name": "entity.name.function.wa"
+            },
+            {
+              "match": "([\\u4e00-\\u9fa5]+)(?=\\s*\\()",
+              "name": "entity.name.function.wa"
+            }
+          ]
+        },
+        {
+          "name": "meta.variable.wa",
+          "patterns": [
+            {
+              "match": "\\b[_A-Z][_A-Z0-9]+\\b",
+              "name": "variable.constant.wa"
+            },
+            {
+              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*_t\\b",
+              "name": "entity.name.type.wa"
+            },
+            {
+              "match": "\\b[A-Z][a-zA-Z0-9]*\\b",
+              "name": "entity.name.type.wa"
+            },
+            {
+              "match": "\\b[_a-zA-Z][_a-zA-Z0-9]*\\b",
+              "name": "variable.wa"
+            }
+          ]
+        }
+      ]
     },
     "keywords": {
       "patterns": [

@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/wa-lang/vscode-wa"
   },
+  "browser": "./dist/extension.js",
   "main": "./dist/extension.js",
   "files": [
     "dist"
@@ -39,6 +40,28 @@
           "light": "./assets/wa.svg",
           "dark": "./assets/wa.svg"
         }
+      },
+      {
+        "id": "wasm",
+        "extensions": [
+          ".wasm"
+        ],
+        "aliases": [
+          "WebAssembly Binary",
+          "WebAssembly"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "wat",
+        "extensions": [
+          ".wat",
+          ".wast"
+        ],
+        "aliases": [
+          "WebAssembly Text"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
@@ -46,6 +69,16 @@
         "language": "wa",
         "scopeName": "source.wa",
         "path": "./syntaxes/wa.tmLanguage.json"
+      },
+      {
+        "language": "wasm",
+        "scopeName": "source.wat",
+        "path": "./syntaxes/wat.tmLanguage.json"
+      },
+      {
+        "language": "wat",
+        "scopeName": "source.wat",
+        "path": "./syntaxes/wat.tmLanguage.json"
       }
     ],
     "snippets": [

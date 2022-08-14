@@ -1,18 +1,10 @@
 导入 "fmt"
 
-导入 (
-  "3rdparty/pkg"
-)
-
-import "myapp/mymath"
-
 import (
+	"3rdparty/pkg"
+	"myapp/mymath"
 	"myapp/mypkg"
 )
-
-函数 主函数() {
-
-}
 
 函数 main() {
 	fmt.Println(42)
@@ -25,7 +17,7 @@ import (
 }
 
 函数 求和(n int) int {
-	let v int
+	变量 v int
 	for i := 1; i <= n; i++ {
 		v += i
 	}

@@ -96,6 +96,7 @@
   "icon": "assets/logo.png",
   "scripts": {
     "dev": "rm -rf dist && tsup --watch",
+    "dev:web": "rm -rf dist && tsup --watch",
     "build": "tsup",
     "preview": "vite preview",
     "test": "vitest",

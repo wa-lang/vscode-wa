@@ -1,8 +1,6 @@
 {
   "scopeName": "source.wa",
-  "fileTypes": [
-    "wa"
-  ],
+  "fileTypes": ["wa"],
   "patterns": [
     {
       "include": "#comments"
@@ -34,7 +32,32 @@
       "patterns": []
     },
     "operators": {
-      "patterns": []
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.wa",
+          "match": "(==|!=|<=|>=|<|>)"
+        },
+        {
+          "name": "keyword.operator.arithmetic.wa",
+          "match": "((\\+|-|\\*|/|\\%)=?)|(\\+\\+|--)"
+        },
+        {
+          "name": "keyword.operator.logical.wa",
+          "match": "(\\!|\\&\\&|\\|\\|)"
+        },
+        {
+          "name": "keyword.operator.assignment.wa",
+          "match": "(\\:\\=|\\=)"
+        },
+        {
+          "name": "keyword.operator.bitwise.wa",
+          "match": "((<<|>>|&|&\\^|\\^|\\|)=?)"
+        },
+        {
+          "name": "keyword.operator.special.wa",
+          "match": "(#)"
+        }
+      ]
     },
     "comments": {
       "patterns": [

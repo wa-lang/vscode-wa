@@ -44,6 +44,12 @@
         "path": "./syntaxes/wa.tmLanguage.json"
       }
     ],
+    "snippets": [
+      {
+        "language": "wa",
+        "path": "./snippets/snippets.json"
+      }
+    ],
     "commands": [],
     "keybindings": [],
     "configuration": {

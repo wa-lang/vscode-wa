@@ -1,6 +1,10 @@
-<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M60 50H150V150H250V50H340L350 60V340L340 350H60L50 340V60" fill="#0000FF"/>
-<path d="M95 95H105V105H95" fill="white"/>
-<path d="M295 95H305V105H295" fill="white"/>
-<path d="M268 230L234 264L200 230L166 264L132 230" stroke="white" stroke-width="8" stroke-linecap="round"/>
+<!-- 
+// 版权 @2019 凹语言 作者。保留所有权利。
+// https://github.com/wa-lang
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" style="border: 0px solid red">
+  <path stroke="none" fill="LightSeaGreen" d="M60,50 h90 v100 h100 v-100 h90 l10,10 v280 l-10,10 h-280 l-10,-10 v-280" />
+  <path stroke="none" fill="white" d="M100,100 m-5,-5 h10 v10 h-10" />
+  <path stroke="none" fill="white" d="M400,100 m-100,0 m-5,-5 h10 v10 h-10" />
+  <path stroke="white" fill="none" stroke-width="8" stroke-linecap="round" d="M200,230 l34,34 l34,-34 M200,230 l-34,34 l-34,-34" />
 </svg>

@@ -29,7 +29,16 @@
       "patterns": []
     },
     "keywords": {
-      "patterns": []
+      "patterns": [
+        {
+          "name": "keyword.storage.wa",
+          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|fn|range|var|default|if|return)\\b"
+        },
+        {
+          "name": "keyword.storage.wa",
+          "match": "\\b(跳出|有辙|常量|继续|没辙|善后|否则|循环|函数|如果|导入|接口|字典|区间|返回|结构|找辙|类型|变量)\\b"
+        }
+      ]
     },
     "operators": {
       "patterns": [

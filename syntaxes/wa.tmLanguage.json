@@ -146,10 +146,6 @@
         {
           "name": "keyword.operator.bitwise.wa",
           "match": "((<<|>>|&|&\\^|\\^|\\|)=?)"
-        },
-        {
-          "name": "keyword.operator.special.wa",
-          "match": "(#)"
         }
       ]
     },
@@ -157,7 +153,7 @@
       "patterns": [
         {
           "name": "comment.line.documentation.wa",
-          "begin": "//[!/](?=[^/])",
+          "begin": "(#|//)(?=[^/])",
           "end": "$",
           "patterns": [
             {
@@ -167,7 +163,7 @@
         },
         {
           "name": "comment.line.double-slash.wa",
-          "begin": "//",
+          "begin": "#",
           "end": "$",
           "patterns": [
             {

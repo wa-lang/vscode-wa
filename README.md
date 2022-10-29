@@ -16,7 +16,7 @@
 - 语法高亮
 - 内置代码片段
 - 补全建议
-- wasm语法高亮（[来源](https://github.com/wasmerio/vscode-wasm/blob/master/syntaxes/wat.json)）
+- wasm语法高亮
 
 
 ## TODOs

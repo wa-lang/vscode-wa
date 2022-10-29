@@ -3,28 +3,131 @@
   "fileTypes": ["wa"],
   "patterns": [
     {
-      "include": "#comments"
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
     },
     {
       "include": "#strings"
     },
     {
-      "include": "#keywords"
+      "include": "#numbers"
+    },
+    {
+      "include": "#variables"
     },
     {
       "include": "#operators"
     },
     {
-      "include": "#numbers"
+      "include": "#comments"
     },
     {
       "include": "#support"
-    },
-    {
-      "include": "#variables"
     }
   ],
   "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.storage.wa",
+          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|fn|range|var|default|if|return)\\b"
+        },
+        {
+          "name": "keyword.storage.wa",
+          "match": "\\b(跳出|有辙|常量|继续|没辙|善后|否则|循环|函数|如果|导入|接口|字典|区间|返回|结构|找辙|类型|变量)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "comment": "Types",
+          "name": "storage.type.wa",
+          "match": "\\b(bool|string|error|map)\\b"
+        },
+        {
+          "comment": "Singed Ints",
+          "name": "storage.name.type.wa",
+          "match": "\\b(int|int8|int16|int32|int64|i8|i16|i32|i64|rune)\\b"
+        },
+        {
+          "comment": "Unsigned Ints",
+          "name": "storage.name.type.wa",
+          "match": "\\b(uint|uint8|uint16|uint32|uint64|u8|u16|u32|u64|uintptr|byte)\\b"
+        },
+        {
+          "comment": "Floats",
+          "name": "storage.name.type.wa",
+          "match": "\\b(float32|float64|f32|f64)\\b"
+        },
+        {
+          "comment": "Complex",
+          "name": "storage.name.type.wa",
+          "match": "\\b(complex64|complex128|c64|c128)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.wa",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "include": "#stringcontent"
+            }
+          ]
+        },
+        {
+          "name": "string.multiline.wa",
+          "begin": "\\\\\\\\",
+          "end": "$"
+        },
+        {
+          "name": "string.quoted.single.wa",
+          "match": "'([^'\\\\]|\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.))'"
+        }
+      ]
+    },
+    "stringcontent": {
+      "patterns": [
+        {
+          "name": "constant.character.escape.wa",
+          "match": "\\\\([nrt'\"\\\\]|(x[0-9a-fA-F]{2})|(u\\{[0-9a-fA-F]+\\}))"
+        },
+        {
+          "name": "invalid.illegal.unrecognized-string-escape.wa",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.float.wa",
+          "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.wa",
+          "match": "\\b[0-9][0-9_]*\\b"
+        },
+        {
+          "name": "constant.numeric.hexadecimal.wa",
+          "match": "\\b0x[a-fA-F0-9_]+\\b"
+        },
+        {
+          "name": "constant.numeric.octal.wa",
+          "match": "\\b0o[0-7_]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.wa",
+          "match": "\\b0b[01_]+\\b"
+        }
+      ]
+    },
     "variables": {
       "patterns": [
         {
@@ -113,18 +216,6 @@
         }
       ]
     },
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.storage.wa",
-          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|fn|range|var|default|if|return)\\b"
-        },
-        {
-          "name": "keyword.storage.wa",
-          "match": "\\b(跳出|有辙|常量|继续|没辙|善后|否则|循环|函数|如果|导入|接口|字典|区间|返回|结构|找辙|类型|变量)\\b"
-        }
-      ]
-    },
     "operators": {
       "patterns": [
         {
@@ -178,65 +269,6 @@
         {
           "match": "\\b(TODO|FIXME|NOTE|INFO|IDEA|CHANGED|BUG|HACK)\\b:?",
           "name": "keyword.todo.wa"
-        }
-      ]
-    },
-    "strings": {
-      "patterns": [
-        {
-          "name": "string.quoted.double.wa",
-          "begin": "\"",
-          "end": "\"",
-          "patterns": [
-            {
-              "include": "#stringcontent"
-            }
-          ]
-        },
-        {
-          "name": "string.multiline.wa",
-          "begin": "\\\\\\\\",
-          "end": "$"
-        },
-        {
-          "name": "string.quoted.single.wa",
-          "match": "'([^'\\\\]|\\\\(x\\h{2}|[0-2][0-7]{,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.))'"
-        }
-      ]
-    },
-    "stringcontent": {
-      "patterns": [
-        {
-          "name": "constant.character.escape.wa",
-          "match": "\\\\([nrt'\"\\\\]|(x[0-9a-fA-F]{2})|(u\\{[0-9a-fA-F]+\\}))"
-        },
-        {
-          "name": "invalid.illegal.unrecognized-string-escape.wa",
-          "match": "\\\\."
-        }
-      ]
-    },
-    "numbers": {
-      "patterns": [
-        {
-          "name": "constant.numeric.float.wa",
-          "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
-        },
-        {
-          "name": "constant.numeric.decimal.wa",
-          "match": "\\b[0-9][0-9_]*\\b"
-        },
-        {
-          "name": "constant.numeric.hexadecimal.wa",
-          "match": "\\b0x[a-fA-F0-9_]+\\b"
-        },
-        {
-          "name": "constant.numeric.octal.wa",
-          "match": "\\b0o[0-7_]+\\b"
-        },
-        {
-          "name": "constant.numeric.binary.wa",
-          "match": "\\b0b[01_]+\\b"
         }
       ]
     },

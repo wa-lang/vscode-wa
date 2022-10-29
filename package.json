@@ -1,9 +1,9 @@
 {
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wa Lang for VS Code",
-  "publisher": "xxxDeveloper",
+  "publisher": "xxx002",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "bugs": {
     "url": "https://github.com/wa-lang/vscode-wa/issues"

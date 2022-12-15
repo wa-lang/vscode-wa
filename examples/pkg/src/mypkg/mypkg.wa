@@ -1,0 +1,11 @@
+type ST struct {
+	A: i32
+	B: string
+}
+
+var G ST
+
+fn Do(x i32) {
+	G.A = x
+	G.B = "Hellow wa"
+}

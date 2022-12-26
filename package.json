@@ -28,6 +28,7 @@
     "Snippets",
     "Programming Languages"
   ],
+  "breakpoints": "wa",
   "contributes": {
     "languages": [
       {
@@ -87,10 +88,37 @@
         "path": "./snippets/snippets.json"
       }
     ],
-    "commands": [],
+    "commands": [
+      {
+        "command": "wa.runWaCode",
+        "title": "Run Wa Code",
+        "category": "Wa"
+      },
+      {
+        "command": "wa.fmtWaCode",
+        "title": "Format Wa Code",
+        "category": "Wa"
+      }
+    ],
     "keybindings": [],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "wa.runWaCode",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
-      "properties": {}
+      "type": "object",
+      "title": "Wa",
+      "properties": {
+        "wa.rootPath": {
+          "type": "string",
+          "default": null,
+          "description": "Path to the wa executable."
+        }
+      }
     }
   },
   "icon": "assets/logo.png",

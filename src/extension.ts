@@ -1,9 +1,11 @@
-// import { window } from 'vscode'
+import { commands, workspace } from 'vscode'
 import type { ExtensionContext } from 'vscode'
+import { runWaCode } from './run'
+import { fmtWaCode } from './fmt'
 
-export function activate(_context: ExtensionContext) {
-  // console.warn('xxx#context', context)
-  // window.showInformationMessage('halo wa')
+export function activate(context: ExtensionContext) {
+  context.subscriptions.push(commands.registerCommand('wa.runWaCode', runWaCode))
+  context.subscriptions.push(workspace.onDidSaveTextDocument(fmtWaCode))
 }
 
 export function deactivate() { }

@@ -18,3 +18,7 @@ node_modules
 
 # Build
 dist
+
+# Wa Result
+wat2wasm
+a.out.wat

@@ -3,25 +3,25 @@
   "fileTypes": ["wa"],
   "patterns": [
     {
-      "include": "#keywords"
-    },
-    {
-      "include": "#types"
+      "include": "#comments"
     },
     {
       "include": "#strings"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#types"
     },
     {
       "include": "#numbers"
     },
     {
       "include": "#variables"
-    },
-    {
-      "include": "#operators"
-    },
-    {
-      "include": "#comments"
     },
     {
       "include": "#support"
@@ -50,7 +50,7 @@
         {
           "comment": "Singed Ints",
           "name": "storage.name.type.wa",
-          "match": "\\b(int|int8|int16|int32|int64|i8|i16|i32|i64|rune)\\b"
+          "match": "\\b(int8|int16|int32|int64|i8|i16|i32|i64|rune)\\b"
         },
         {
           "comment": "Unsigned Ints",
@@ -240,25 +240,45 @@
         }
       ]
     },
-    "comments": {
+    "comments":{
       "patterns": [
         {
-          "name": "comment.line.documentation.wa",
-          "begin": "(#|//)(?=[^/])",
-          "end": "$",
-          "patterns": [
-            {
-              "include": "#commentContents"
+          "name": "comment.line.double-slash.wa",
+          "begin": "//",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.wa"
             }
-          ]
+          },
+          "end": "$"
         },
         {
           "name": "comment.line.double-slash.wa",
-          "begin": "#",
-          "end": "$",
+          "begin": "#wa:",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.wa"
+            }
+          },
+          "end": "$"
+        },
+        {
+          "name": "comment.block.documentation.wa",
+          "begin": "/\\*",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.begin.wa"
+            }
+          },
+          "end": "\\*/",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.comment.end.wa"
+            }
+          },
           "patterns": [
             {
-              "include": "#commentContents"
+              "include": "#comments"
             }
           ]
         }

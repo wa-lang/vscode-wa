@@ -32,7 +32,7 @@
       "patterns": [
         {
           "name": "keyword.storage.wa",
-          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|fn|range|var|default|if|return)\\b"
+          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|func|range|var|default|if|return)\\b"
         },
         {
           "name": "keyword.storage.wa",
@@ -134,7 +134,7 @@
           "name": "meta.function.declaration.wa",
           "patterns": [
             {
-              "match": "\\b(fn|函数)\\s+([A-Z][a-zA-Z0-9]*)\\b",
+              "match": "\\b(func|函数)\\s+([A-Z][a-zA-Z0-9]*)\\b",
               "captures": {
                 "1": {
                   "name": "storage.type.function.wa"
@@ -145,7 +145,7 @@
               }
             },
             {
-              "match": "\\b(fn|函数)\\s+([_a-zA-Z][_a-zA-Z0-9]*)\\b",
+              "match": "\\b(func|函数)\\s+([_a-zA-Z][_a-zA-Z0-9]*)\\b",
               "captures": {
                 "1": {
                   "name": "storage.type.function.wa"
@@ -156,7 +156,7 @@
               }
             },
             {
-              "begin": "\\b(fn|函数)\\s+",
+              "begin": "\\b(func|函数)\\s+",
               "end": "\"",
               "name": "entity.name.function.wa",
               "beginCaptures": {
@@ -172,7 +172,7 @@
             },
             {
               "name": "keyword.default.wa",
-              "match": "\\b(const|var|fn|常量|变量|函数)\\b"
+              "match": "\\b(const|var|func|常量|变量|函数)\\b"
             }
           ]
         },

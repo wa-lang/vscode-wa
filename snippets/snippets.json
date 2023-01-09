@@ -299,14 +299,14 @@
     "single defer statement": {
       "prefix": "df",
       "body": [
-        "defer ${1:fn}()"
+        "defer ${1:func}()"
       ],
       "description": "Snippet for defer statement"
     },
     "single defer statement cn": {
       "prefix": ["善后", "shanhou", "sh"],
       "body": [
-        "善后 ${1:fn}()"
+        "善后 ${1:func}()"
       ],
       "description": "Snippet for defer statement"
     },
@@ -355,7 +355,7 @@
     "function declaration": {
       "prefix": "f",
       "body": [
-        "fn ${1:name}($2) $3 {",
+        "func ${1:name}($2) $3 {",
         "\t$0",
         "}"
       ],

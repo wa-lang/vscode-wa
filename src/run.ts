@@ -4,8 +4,9 @@ import { getCorrectPath, getProjectDirPath } from './helpers'
 export const runWaCode = () => {
   const document = window.activeTextEditor?.document
   const langId = document?.languageId
-  if (langId !== 'wa')
+  if (langId !== 'wa') {
     return window.showErrorMessage('Code language not supported or defined.')
+  }
 
   const filePath = getProjectDirPath(document!.uri.fsPath)
   const path = getCorrectPath(filePath)

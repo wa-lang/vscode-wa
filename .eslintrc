@@ -1,3 +1,6 @@
 {
-  "extends": "@antfu"
+  "extends": "@ohxxx",
+  "rules": {
+    "max-statements-per-line": "off"
+  }
 }

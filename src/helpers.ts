@@ -15,15 +15,13 @@ export const getRootPathConf = () => {
 }
 
 export const getCorrectPath = (path: string) => {
-  if (isWin)
-    return path.replace(/\\/g, '/')
+  if (isWin) { return path.replace(/\\/g, '/') }
 
   return path
 }
 
 export const getProjectDirPath = (path: string) => {
-  if (isWin)
-    return path.replace(/\\src\\.*$/, '')
+  if (isWin) { return path.replace(/\\src\\.*$/, '') }
 
   return path.replace(/\/src\/.*$/, '')
 }

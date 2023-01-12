@@ -1,6 +1,6 @@
 import { spawn } from 'child_process'
 import { window } from 'vscode'
-import { getCorrectPath, getRootPathConf, isWin } from './helpers'
+import { fmtPath, getRootPathConf, isWin } from './helpers'
 
 export const fmtWaCode = () => {
   const document = window.activeTextEditor?.document
@@ -13,7 +13,7 @@ export const fmtWaCode = () => {
     return window.showErrorMessage('Please set the path of the wa rootPath in the settings.')
   }
 
-  const path = getCorrectPath(document!.uri.fsPath)
+  const path = fmtPath(document!.uri.fsPath)
   const command = `${isWin ? 'wa' : rootPathConf} fmt ${path}`
   const spawnedProcess = spawn(command, [], { shell: true })
 

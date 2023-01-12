@@ -14,14 +14,20 @@ export const getRootPathConf = () => {
   return conf?.rootPath
 }
 
-export const getCorrectPath = (path: string) => {
+export const fmtPath = (path: string) => {
   if (isWin) { return path.replace(/\\/g, '/') }
 
   return path
 }
 
 export const getProjectDirPath = (path: string) => {
-  if (isWin) { return path.replace(/\\src\\.*$/, '') }
+  if (isWin) { return path.replace(/\\src\\.*$/, '\\') }
 
-  return path.replace(/\/src\/.*$/, '')
+  return path.replace(/\/src\/.*$/, '/')
+}
+
+export const getParentDirPath = (path: string) => {
+  if (isWin) { return path.replace(/\\[^\\]*$/, '') }
+
+  return path.replace(/\/[^\/]*$/, '')
 }

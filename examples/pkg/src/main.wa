@@ -3,18 +3,18 @@ import (
 )
 
 type ST struct {
-	A: string
-	B: i32
+	A :string
+	B :i32
 }
 
-var G ST
+var G: ST
 
-func Do() {
+fn Do() {
 	G.A = "13"
 	G.B = 1024
 }
 
-func main() {
+fn main() {
 	mypkg.Do(42)
 	println(mypkg.G.A)
 	println(mypkg.G.B)
@@ -22,7 +22,7 @@ func main() {
 	Do()
 	println(G.A)
 	println(G.B)
-	
+
 	println(mypkg.G.A)
 	println(mypkg.G.B)
 }

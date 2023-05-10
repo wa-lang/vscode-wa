@@ -7,13 +7,6 @@
       ],
       "description": "Snippet for import statement"
     },
-    "single import cn": {
-      "prefix": ["导入", "daoru", "dr"],
-      "body": [
-        "导入 \"${1:pkg}\""
-      ],
-      "description": "Snippet for import statement"
-    },
     "multiple imports": {
       "prefix": "ims",
       "body": [
@@ -30,13 +23,6 @@
       ],
       "description": "Snippet for a constant"
     },
-    "single constant cn": {
-      "prefix": ["常量", "cl", "changliang"],
-      "body": [
-        "常量 ${1:name} = ${2:value}"
-      ],
-      "description": "Snippet for a constant"
-    },
     "multiple constants": {
       "prefix": "cos",
       "body": [
@@ -50,13 +36,6 @@
       "prefix": "va",
       "body": [
         "var ${1:name} = ${2:type}"
-      ],
-      "description": "Snippet for a variable"
-    },
-    "single variable declaration cn": {
-      "prefix": ["变量", "bianliang", "bl"],
-      "body": [
-        "变量 ${1:name} = ${2:type}"
       ],
       "description": "Snippet for a variable"
     },
@@ -77,26 +56,10 @@
       ],
       "description": "Snippet for a type function declaration"
     },
-    "type function declaration cn": {
-      "prefix": ["函数类型", "hanshuleixing", "hslx"],
-      "body": [
-        "类型 ${1:name} 函数($3) $4"
-      ],
-      "description": "Snippet for a type function declaration"
-    },
     "type interface declaration": {
       "prefix": "tyi",
       "body": [
         "type ${1:name} interface {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for a type interface"
-    },
-    "type interface declaration cn": {
-      "prefix": ["接口", "jiekou", "jk"],
-      "body": [
-        "类型 ${1:name} 接口 {",
         "\t$0",
         "}"
       ],
@@ -111,28 +74,10 @@
       ],
       "description": "Snippet for a struct declaration"
     },
-    "type struct declaration cn": {
-      "prefix": ["结构", "jiegou", "jg"],
-      "body": [
-        "类型 ${1:name} 结构 {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for a struct declaration"
-    },
     "single if statement": {
       "prefix": "if",
       "body": [
         "if ${1:cond} {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for if statement"
-    },
-    "single if statement cn": {
-      "prefix": ["如果", "ruguo", "rg"],
-      "body": [
-        "如果 ${1:cond} {",
         "\t$0",
         "}"
       ],
@@ -149,30 +94,10 @@
       ],
       "description": "Snippet for if else statement"
     },
-    "single if else statement cn": {
-      "prefix": ["如果否则", "ruguofouze", "rgfz"],
-      "body": [
-        "如果 ${1:cond} {",
-        "\t$0",
-        "} 否则 {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for if else statement"
-    },
     "single if != nil statement": {
       "prefix": "iferr",
       "body": [
         "if ${1:cond} != nil {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for if != nil statement"
-    },
-    "single if != nil statement cn": {
-      "prefix": ["如果错误", "ruguocuowu", "rgcw"],
-      "body": [
-        "如果 ${1:cond} != nil {",
         "\t$0",
         "}"
       ],
@@ -187,15 +112,6 @@
       ],
       "description": "Snippet for for statement"
     },
-    "for statement cn": {
-      "prefix": ["循环", "xunhuan", "xh"],
-      "body": [
-        "循环 ${1:i} := ${2:0}; $1 < ${3:count}; $1${4:++} {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for for statement"
-    },
     "for range statement": {
       "prefix": "forr",
       "body": [
@@ -205,28 +121,10 @@
       ],
       "description": "Snippet for for range statement"
     },
-    "for range statement cn": {
-      "prefix": ["循环区间", "xunhuanqujian", "xhqj"],
-      "body": [
-        "循环 ${1:_, }${2:v} := 区间 ${3:v} {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for for range statement"
-    },
     "single switch statement": {
       "prefix": "sw",
       "body": [
         "switch ${1:expr} {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for switch statement"
-    },
-    "single switch statement cn": {
-      "prefix": ["找辙", "zhaozhe", "zz"],
-      "body": [
-        "找辙 ${1:expr} {",
         "\t$0",
         "}"
       ],
@@ -242,31 +140,11 @@
       ],
       "description": "Snippet for switch case statement"
     },
-    "single switch case statement cn": {
-      "prefix": ["找辙有辙", "zhaozheyouzhe", "zzyz"],
-      "body": [
-        "找辙 ${1:expr} {",
-        "有辙 ${2:cond}:",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for switch case statement"
-    },
     "single switch default statement": {
       "prefix": "swd",
       "body": [
         "switch ${1:expr} {",
         "default:",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for switch default statement"
-    },
-    "single switch default statement cn": {
-      "prefix": ["找辙没辙", "zhaozhemezhe", "zzmz"],
-      "body": [
-        "找辙 ${1:expr} {",
-        "没辙:",
         "\t$0",
         "}"
       ],
@@ -284,29 +162,10 @@
       ],
       "description": "Snippet for switch default statement"
     },
-    "single switch case default statement cn": {
-      "prefix": ["找辙有辙没辙", "zhaozheyouzhemeizhe", "zzyzmz"],
-      "body": [
-        "找辙 ${1:expr} {",
-        "有辙 ${2:cond1}:",
-        "\t$3",
-        "没辙 ${4:cond2}:",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for switch default statement"
-    },
     "single defer statement": {
       "prefix": "df",
       "body": [
         "defer ${1:func}()"
-      ],
-      "description": "Snippet for defer statement"
-    },
-    "single defer statement cn": {
-      "prefix": ["善后", "shanhou", "sh"],
-      "body": [
-        "善后 ${1:func}()"
       ],
       "description": "Snippet for defer statement"
     },
@@ -317,24 +176,10 @@
       ],
       "description": "Snippet for return statement"
     },
-    "single return statement cn": {
-      "prefix": ["返回", "fanhui", "fh"],
-      "body": [
-        "返回 ${1:value}"
-      ],
-      "description": "Snippet for return statement"
-    },
     "single break statement": {
       "prefix": "br",
       "body": [
         "break"
-      ],
-      "description": "Snippet for break statement"
-    },
-    "single break statement cn": {
-      "prefix": ["跳出", "tiaochu", "tc"],
-      "body": [
-        "跳出"
       ],
       "description": "Snippet for break statement"
     },
@@ -345,26 +190,10 @@
       ],
       "description": "Snippet for continue statement"
     },
-    "single continue statement cn": {
-      "prefix": ["继续", "jixu", "jx"],
-      "body": [
-        "继续"
-      ],
-      "description": "Snippet for continue statement"
-    },
     "function declaration": {
       "prefix": "f",
       "body": [
         "func ${1:name}($2) $3 {",
-        "\t$0",
-        "}"
-      ],
-      "description": "Snippet for function declaration"
-    },
-    "function declaration cn": {
-      "prefix": ["函数", "hanshu", "hs"],
-      "body": [
-        "函数 ${1:name}($2) $3 {",
         "\t$0",
         "}"
       ],

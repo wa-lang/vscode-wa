@@ -1,6 +1,8 @@
 {
   "scopeName": "source.wa",
-  "fileTypes": ["wa"],
+  "fileTypes": [
+    "wa"
+  ],
   "patterns": [
     {
       "include": "#comments"
@@ -32,7 +34,7 @@
       "patterns": [
         {
           "name": "keyword.storage.wa",
-          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|func|range|var|default|if|return)\\b"
+          "match": "\\b(break|defer|import|struct|case|else|interface|switch|const|for|map|type|continue|func|range|var|default|global|if|return)\\b"
         }
       ]
     },
@@ -46,7 +48,7 @@
         {
           "comment": "Singed Ints",
           "name": "storage.name.type.wa",
-          "match": "\\b(int8|int16|int32|int64|i8|i16|i32|i64|rune)\\b"
+          "match": "\\b(int|int8|int16|int32|int64|i8|i16|i32|i64|rune)\\b"
         },
         {
           "comment": "Unsigned Ints",
@@ -236,7 +238,7 @@
         }
       ]
     },
-    "comments":{
+    "comments": {
       "patterns": [
         {
           "name": "comment.line.double-slash.wa",

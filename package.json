@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {
@@ -44,6 +44,17 @@
         }
       },
       {
+        "id": "wa.mod",
+        "extensions": [
+          "wa.mod"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./assets/wa.mod.svg",
+          "dark": "./assets/wa.mod.svg"
+        }
+      },
+      {
         "id": "wasm",
         "extensions": [
           ".wasm"
@@ -71,6 +82,11 @@
         "language": "wa",
         "scopeName": "source.wa",
         "path": "./syntaxes/wa.tmLanguage.json"
+      },
+      {
+        "language": "wa.mod",
+        "scopeName": "source.wa.mod",
+        "path": "./syntaxes/wa.mod.tmLanguage.json"
       },
       {
         "language": "wasm",

@@ -1,336 +1,75 @@
 {
   "scopeName": "source.wa.mod",
+  "fileTypes": [
+    "wa.mod"
+  ],
   "patterns": [
     {
-      "include": "#commentDirective"
+      "name": "keyword.key.wa.mod",
+      "match": "^\\s*([a-z_][a-z0-9_]*)\\s*="
     },
     {
-      "include": "#comment"
-    },
-    {
-      "include": "#table"
-    },
-    {
-      "include": "#entryBegin"
-    },
-    {
-      "include": "#value"
-    }
-  ],
-  "repository": {
-    "comment": {
-      "captures": {
-        "1": {
-          "name": "comment.line.number-sign.wa.mod"
-        },
-        "2": {
-          "name": "punctuation.definition.comment.wa.mod"
-        }
-      },
-      "comment": "Comments",
-      "match": "\\s*((#).*)$"
-    },
-    "commentDirective": {
-      "captures": {
-        "1": {
-          "name": "meta.preprocessor.wa.mod"
-        },
-        "2": {
-          "name": "punctuation.definition.meta.preprocessor.wa.mod"
-        }
-      },
-      "comment": "Comments",
-      "match": "\\s*((#):.*)$"
-    },
-    "table": {
+      "name": "string.quoted.double.wa.mod",
+      "begin": "\"",
+      "end": "\"",
       "patterns": [
         {
-          "name": "meta.table.wa.mod",
-          "match": "^\\s*(\\[)\\s*((?:(?:(?:[A-Za-z0-9_+-]+)|(?:\"[^\"]+\")|(?:'[^']+'))\\s*\\.?\\s*)+)\\s*(\\])",
-          "captures": {
-            "1": {
-              "name": "punctuation.definition.table.wa.mod"
-            },
-            "2": {
-              "patterns": [
-                {
-                  "match": "(?:[A-Za-z0-9_+-]+)|(?:\"[^\"]+\")|(?:'[^']+')",
-                  "name": "support.type.property-name.table.wa.mod"
-                },
-                {
-                  "match": "\\.",
-                  "name": "punctuation.separator.dot.wa.mod"
-                }
-              ]
-            },
-            "3": {
-              "name": "punctuation.definition.table.wa.mod"
-            }
-          }
-        },
-        {
-          "name": "meta.array.table.wa.mod",
-          "match": "^\\s*(\\[\\[)\\s*((?:(?:(?:[A-Za-z0-9_+-]+)|(?:\"[^\"]+\")|(?:'[^']+'))\\s*\\.?\\s*)+)\\s*(\\]\\])",
-          "captures": {
-            "1": {
-              "name": "punctuation.definition.array.table.wa.mod"
-            },
-            "2": {
-              "patterns": [
-                {
-                  "match": "(?:[A-Za-z0-9_+-]+)|(?:\"[^\"]+\")|(?:'[^']+')",
-                  "name": "support.type.property-name.array.wa.mod"
-                },
-                {
-                  "match": "\\.",
-                  "name": "punctuation.separator.dot.wa.mod"
-                }
-              ]
-            },
-            "3": {
-              "name": "punctuation.definition.array.table.wa.mod"
-            }
-          }
-        },
-        {
-          "begin": "(\\{)",
-          "end": "(\\})",
-          "name": "meta.table.inline.wa.mod",
-          "beginCaptures": {
-            "1": {
-              "name": "punctuation.definition.table.inline.wa.mod"
-            }
-          },
-          "endCaptures": {
-            "1": {
-              "name": "punctuation.definition.table.inline.wa.mod"
-            }
-          },
-          "patterns": [
-            {
-              "include": "#comment"
-            },
-            {
-              "match": ",",
-              "name": "punctuation.separator.table.inline.wa.mod"
-            },
-            {
-              "include": "#entryBegin"
-            },
-            {
-              "include": "#value"
-            }
-          ]
+          "name": "constant.character.escape.wa.mod",
+          "match": "\\\\."
         }
       ]
     },
-    "entryBegin": {
-      "name": "meta.entry.wa.mod",
-      "match": "\\s*((?:(?:(?:[A-Za-z0-9_+-]+)|(?:\"[^\"]+\")|(?:'[^']+'))\\s*\\.?\\s*)+)\\s*(=)",
-      "captures": {
-        "1": {
-          "patterns": [
-            {
-              "match": "(?:[A-Za-z0-9_+-]+)|(?:\"[^\"]+\")|(?:'[^']+')",
-              "name": "support.type.property-name.wa.mod"
-            },
-            {
-              "match": "\\.",
-              "name": "punctuation.separator.dot.wa.mod"
-            }
-          ]
-        },
-        "2": {
-          "name": "punctuation.eq.wa.mod"
-        }
-      }
-    },
-    "value": {
+    {
+      "name": "string.quoted.single.wa.mod",
+      "begin": "'",
+      "end": "'",
       "patterns": [
         {
-          "name": "string.quoted.triple.basic.block.wa.mod",
-          "begin": "\"\"\"",
-          "end": "\"\"\"",
-          "patterns": [
-            {
-              "match": "\\\\([btnfr\"\\\\\\n/ ]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-              "name": "constant.character.escape.wa.mod"
-            },
-            {
-              "match": "\\\\[^btnfr/\"\\\\\\n]",
-              "name": "invalid.illegal.escape.wa.mod"
-            }
-          ]
+          "name": "constant.character.escape.wa.mod",
+          "match": "\\\\."
+        }
+      ]
+    },
+    {
+      "name": "punctuation.definition.array.begin.wa.mod",
+      "match": "\\["
+    },
+    {
+      "name": "punctuation.definition.array.end.wa.mod",
+      "match": "\\]"
+    },
+    {
+      "name": "string.unquoted.wa.mod",
+      "match": "[a-zA-Z_][a-zA-Z0-9_]*"
+    },
+    {
+      "name": "comment.line.number-sign.wa.mod",
+      "match": "#.*"
+    }
+  ],
+  "repository": {
+    "$self": {
+      "patterns": [
+        {
+          "include": "#string.quoted.double.wa.mod"
         },
         {
-          "name": "string.quoted.single.basic.line.wa.mod",
-          "begin": "\"",
-          "end": "\"",
-          "patterns": [
-            {
-              "match": "\\\\([btnfr\"\\\\\\n/ ]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})",
-              "name": "constant.character.escape.wa.mod"
-            },
-            {
-              "match": "\\\\[^btnfr/\"\\\\\\n]",
-              "name": "invalid.illegal.escape.wa.mod"
-            }
-          ]
+          "include": "#string.quoted.single.wa.mod"
         },
         {
-          "name": "string.quoted.triple.literal.block.wa.mod",
-          "begin": "'''",
-          "end": "'''"
+          "include": "#keyword.key.wa.mod"
         },
         {
-          "name": "string.quoted.single.literal.line.wa.mod",
-          "begin": "'",
-          "end": "'"
+          "include": "#punctuation.definition.array.begin.wa.mod"
         },
         {
-          "captures": {
-            "1": {
-              "name": "constant.other.time.datetime.offset.wa.mod"
-            }
-          },
-          "match": "(?<!\\w)(\\d{4}\\-\\d{2}\\-\\d{2}[T| ]\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[\\+\\-]\\d{2}:\\d{2}))(?!\\w)"
+          "include": "#punctuation.definition.array.end.wa.mod"
         },
         {
-          "captures": {
-            "1": {
-              "name": "constant.other.time.datetime.local.wa.mod"
-            }
-          },
-          "match": "(\\d{4}\\-\\d{2}\\-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?)"
+          "include": "#string.unquoted.wa.mod"
         },
         {
-          "name": "constant.other.time.date.wa.mod",
-          "match": "\\d{4}\\-\\d{2}\\-\\d{2}"
-        },
-        {
-          "name": "constant.other.time.time.wa.mod",
-          "match": "\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?"
-        },
-        {
-          "match": "(?<!\\w)(true|false)(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.language.boolean.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)([\\+\\-]?(0|([1-9](([0-9]|_[0-9])+)?))(?:(?:\\.([0-9]+))?[eE][\\+\\-]?[1-9]_?[0-9]*|(?:\\.[0-9_]*)))(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.float.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)((?:[\\+\\-]?(0|([1-9](([0-9]|_[0-9])+)?))))(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.integer.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)([\\+\\-]?inf)(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.inf.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)([\\+\\-]?nan)(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.nan.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)((?:0x(([0-9a-fA-F](([0-9a-fA-F]|_[0-9a-fA-F])+)?))))(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.hex.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)(0o[0-7](_?[0-7])*)(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.oct.wa.mod"
-            }
-          }
-        },
-        {
-          "match": "(?<!\\w)(0b[01](_?[01])*)(?!\\w)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.bin.wa.mod"
-            }
-          }
-        },
-        {
-          "name": "meta.array.wa.mod",
-          "begin": "(?<!\\w)(\\[)\\s*",
-          "end": "\\s*(\\])(?!\\w)",
-          "beginCaptures": {
-            "1": {
-              "name": "punctuation.definition.array.wa.mod"
-            }
-          },
-          "endCaptures": {
-            "1": {
-              "name": "punctuation.definition.array.wa.mod"
-            }
-          },
-          "patterns": [
-            {
-              "match": ",",
-              "name": "punctuation.separator.array.wa.mod"
-            },
-            {
-              "include": "#comment"
-            },
-            {
-              "include": "#value"
-            }
-          ]
-        },
-        {
-          "begin": "(\\{)",
-          "end": "(\\})",
-          "name": "meta.table.inline.wa.mod",
-          "beginCaptures": {
-            "1": {
-              "name": "punctuation.definition.table.inline.wa.mod"
-            }
-          },
-          "endCaptures": {
-            "1": {
-              "name": "punctuation.definition.table.inline.wa.mod"
-            }
-          },
-          "patterns": [
-            {
-              "include": "#comment"
-            },
-            {
-              "match": ",",
-              "name": "punctuation.separator.table.inline.wa.mod"
-            },
-            {
-              "include": "#entryBegin"
-            },
-            {
-              "include": "#value"
-            }
-          ]
+          "include": "#comment.line.number-sign.wa.mod"
         }
       ]
     }

@@ -28,7 +28,7 @@
         }
       },
       "comment": "Comments",
-      "match": "\\s*((//).*)$"
+      "match": "\\s*((#).*)$"
     },
     "commentDirective": {
       "captures": {
@@ -40,7 +40,7 @@
         }
       },
       "comment": "Comments",
-      "match": "\\s*((//):.*)$"
+      "match": "\\s*((#):.*)$"
     },
     "table": {
       "patterns": [

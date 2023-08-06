@@ -43,26 +43,31 @@
         {
           "comment": "Types",
           "name": "storage.type.wa",
-          "match": "\\b(bool|string|error|map)\\b"
+          "match": "\\b(bool|string|error|map|nil)\\b"
         },
         {
           "comment": "Singed Ints",
-          "name": "storage.name.type.wa",
+          "name": "storage.singed.type.wa",
           "match": "\\b(int|int8|int16|int32|int64|i8|i16|i32|i64|rune)\\b"
         },
         {
           "comment": "Unsigned Ints",
-          "name": "storage.name.type.wa",
+          "name": "storage.unsigned.type.wa",
           "match": "\\b(uint|uint8|uint16|uint32|uint64|u8|u16|u32|u64|uintptr|byte)\\b"
         },
         {
+          "comment": "Bool",
+          "name": "storage.bool.type.wa",
+          "match": "\\b(true|false)\\b"
+        },
+        {
           "comment": "Floats",
-          "name": "storage.name.type.wa",
+          "name": "storage.floats.type.wa",
           "match": "\\b(float32|float64|f32|f64)\\b"
         },
         {
           "comment": "Complex",
-          "name": "storage.name.type.wa",
+          "name": "storage.complex.type.wa",
           "match": "\\b(complex64|complex128|c64|c128)\\b"
         }
       ]

@@ -7,7 +7,7 @@ package main
 *                  halo                  *
 *                                        *
 *****************************************/
-fn main() {
+func main() {
   println("Hello, world!");
 }
 
@@ -18,7 +18,7 @@ fn main() {
 *****************************************/
 var I [8]i32
 
-fn test_array() {
+func test_array() {
 	var j [8]i32
 	j[3] = 40
 	I = gen_arr(j)
@@ -27,7 +27,7 @@ fn test_array() {
 	println(I[3])
 }
 
-fn gen_arr(param: [8]i32) => [8]i32 {
+func gen_arr(param: [8]i32) => [8]i32 {
 	param[3] += 2
 	return param
 }
@@ -37,20 +37,20 @@ fn gen_arr(param: [8]i32) => [8]i32 {
 *                   ref                  *
 *                                        *
 *****************************************/
-fn test_ref() {
+func test_ref() {
 	p := new_int()
 	println(*p)
 	proc(p)
 	println(*p)
 }
 
-fn new_int() => *i32 {
+func new_int() => *i32 {
 	var i: i32
 	i = 42
 	return &i
 }
 
-fn proc(i: *i32) {
+func proc(i: *i32) {
 	*i = 13
 }
 
@@ -59,7 +59,7 @@ fn proc(i: *i32) {
 *                  slice                 *
 *                                        *
 *****************************************/
-fn test_slice() {
+func test_slice() {
 	a := [4]i32{12, 34, 56, 78}
 	s := a[0:1]
 	s[0] = 42
@@ -88,7 +88,7 @@ fn test_slice() {
 *                 string                 *
 *                                        *
 *****************************************/
-fn test_string() {
+func test_string() {
 	println("你好，凹语言！")
 	
 	s1 := gen_str()
@@ -98,7 +98,7 @@ fn test_string() {
 	println(s2)	
 }
 
-fn gen_str() => string {
+func gen_str() => string {
 	return "123456"
 }
 
@@ -107,7 +107,7 @@ fn gen_str() => string {
 *                 struct                 *
 *                                        *
 *****************************************/
-fn test_struct() {
+func test_struct() {
 	i := gen_scref()
 	println(*i.a)
 	println(i.b)
@@ -126,7 +126,7 @@ type sc struct {
 	sp
 }
 
-fn gen_scref() => *sc {
+func gen_scref() => *sc {
 	var v: sc
 	var i: i32
 	i = 13
@@ -135,7 +135,7 @@ fn gen_scref() => *sc {
 	return &v
 }
 
-fn gen_sc() => sc {
+func gen_sc() => sc {
 	var i: i32 = 26
 	var v: sc
 	v.a = &i

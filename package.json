@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {

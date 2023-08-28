@@ -18,7 +18,7 @@ export const runWaCode = () => {
   }
   else {
     const srcPath = getProjectDirPath(fsPath)
-    const hasWaModJson = fs.readdirSync(srcPath)?.includes('wa.mod.json')
+    const hasWaModJson = fs.readdirSync(srcPath)?.includes('wa.mod.json') || fs.readdirSync(srcPath)?.includes('wa.mod')
     if (!hasWaModJson) {
       return vs.window.showErrorMessage('wa.mod.json not found in the current directory.')
     }

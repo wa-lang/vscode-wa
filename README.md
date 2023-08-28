@@ -9,17 +9,10 @@
 
 <img src="./assets/preview.png">
 
+
 ## Features
 
-`mac` 用户需要 `vscode/settings.json` 中配置 `rootPath`，即 wa 的程序地址
-
-```json
-{
-  "wa.rootPath": "/Users/xxx/go/bin/wa"
-}
-```
-
-
+确保已经安装了 [凹语言](https://wa-lang.org/man/chs/1.%E5%AE%89%E8%A3%85%E5%8F%8A%E5%85%A5%E9%97%A8/1.2.%E5%AE%89%E8%A3%85%E5%87%B9%E8%AF%AD%E8%A8%80.html)， `macOS` 和 `Linux` 系统建议使用 `Homebrew` 进行安装。
 
 - 语法高亮（web 插件已支持）
 - 内置代码片段（web 插件已支持）

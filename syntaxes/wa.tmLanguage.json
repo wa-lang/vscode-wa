@@ -143,7 +143,7 @@
                   "name": "storage.type.function.wa"
                 },
                 "2": {
-                  "name": "entity.name.type.wa"
+                  "name": "entity.name.function.wa"
                 }
               }
             },
@@ -183,8 +183,16 @@
           "name": "meta.function.call.wa",
           "patterns": [
             {
+              "match": "([A-Z][a-zA-Z0-9]*)(?=\\s*\\{)",
+              "name": "entity.name.function.wa"
+            },
+            {
               "match": "([A-Z][a-zA-Z0-9]*)(?=\\s*\\()",
-              "name": "entity.name.type.wa"
+              "name": "entity.name.function.wa"
+            },
+            {
+              "match": "([_a-zA-Z][_a-zA-Z0-9]*)(?=\\s*\\{)",
+              "name": "entity.name.function.wa"
             },
             {
               "match": "([_a-zA-Z][_a-zA-Z0-9]*)(?=\\s*\\()",

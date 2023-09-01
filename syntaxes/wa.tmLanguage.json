@@ -239,11 +239,11 @@
         },
         {
           "name": "keyword.operator.logical.wa",
-          "match": "(\\!|\\&\\&|\\|\\|)"
+          "match": "(!|&&|\\|\\|)"
         },
         {
           "name": "keyword.operator.assignment.wa",
-          "match": "(\\:\\=|\\=)"
+          "match": "(:=|=>|=)"
         },
         {
           "name": "keyword.operator.bitwise.wa",

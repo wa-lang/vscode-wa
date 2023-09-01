@@ -1,12 +1,12 @@
 import fs from 'node:fs'
-import * as vs from 'vscode'
+import { ShellExecution, Task, tasks, window, workspace } from 'vscode'
 import { fmtPath, getParentDirPath, getProjectDirPath } from './helpers'
 
 export const runWaCode = () => {
-  const document = vs.window.activeTextEditor?.document
+  const document = window.activeTextEditor?.document
   const langId = document?.languageId
   if (langId !== 'wa') {
-    return vs.window.showErrorMessage('Code language not supported or defined.')
+    return window.showErrorMessage('Code language not supported or defined.')
   }
 
   let proPath, filePath
@@ -20,7 +20,7 @@ export const runWaCode = () => {
     const srcPath = getProjectDirPath(fsPath)
     const hasWaModJson = fs.readdirSync(srcPath)?.includes('wa.mod.json') || fs.readdirSync(srcPath)?.includes('wa.mod')
     if (!hasWaModJson) {
-      return vs.window.showErrorMessage('wa.mod.json not found in the current directory.')
+      return window.showErrorMessage('wa.mod.json not found in the current directory.')
     }
     const _filePath = getProjectDirPath(fsPath)
     const path = fmtPath(_filePath)
@@ -28,15 +28,15 @@ export const runWaCode = () => {
     filePath = path
   }
 
-  const waRunTask = vs.tasks.taskExecutions.find(task => task.task.name === 'wa run')
+  const waRunTask = tasks.taskExecutions.find(task => task.task.name === 'wa run')
   if (waRunTask) {
     waRunTask.terminate()
   }
 
-  vs.tasks.executeTask(
-    new vs.Task(
-      { type: 'wa' }, vs.workspace.workspaceFolders![0], 'wa run', 'wa',
-      new vs.ShellExecution(`wa run ${filePath}`, { cwd: proPath }),
+  tasks.executeTask(
+    new Task(
+      { type: 'wa' }, workspace.workspaceFolders![0], 'wa run', 'wa',
+      new ShellExecution(`wa run ${filePath}`, { cwd: proPath }),
     ),
   )
 }

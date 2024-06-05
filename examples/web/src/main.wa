@@ -1,0 +1,14 @@
+// 版权 @2024 web 作者。保留所有权利。
+
+func main {
+	println("你好，凹语言！")
+	println(sum(100))
+}
+
+func sum(n: int) => int {
+	v: int
+	for i := 1; i <= n; i++ {
+		v += i
+	}
+	return v
+}

@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {
@@ -236,7 +236,6 @@
     "@vscode/test-web": "^0.0.54",
     "@vscode/wasm-wasi": "0.13.0-pre.1",
     "eslint": "^8.31.0",
-    "nanoid": "^5.0.7",
     "tsup": "^8.1.0",
     "typescript": "^5.4.5",
     "vite": "^5.3.1"

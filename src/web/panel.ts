@@ -1,6 +1,6 @@
 import type { ExtensionContext } from 'vscode'
 import { Uri, ViewColumn, window, workspace } from 'vscode'
-import { nanoid } from 'nanoid'
+import { uuid } from './helpers'
 
 export async function waPreviewPanel(context: ExtensionContext) {
   const panel = window.createWebviewPanel(
@@ -44,7 +44,7 @@ export async function waPreviewPanel(context: ExtensionContext) {
         <link rel="stylesheet" crossorigin href=${styleUri}>
       </head>
       <body>
-        <div id="root" nonce="${nanoid()}"></div>
+        <div id="root" nonce="${uuid()}"></div>
       </body>
 
     </html>

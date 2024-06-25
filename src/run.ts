@@ -1,31 +1,35 @@
-import fs from 'node:fs'
-import { ShellExecution, Task, tasks, window, workspace } from 'vscode'
-import { fmtPath, getParentDirPath, getProjectDirPath } from './helpers'
+import { ShellExecution, Task, Uri, tasks, window, workspace } from 'vscode'
 
-export const runWaCode = () => {
+export const runWaCode = async () => {
   const document = window.activeTextEditor?.document
   const langId = document?.languageId
   if (langId !== 'wa') {
     return window.showErrorMessage('Code language not supported or defined.')
   }
 
-  let proPath, filePath
   const fsPath = document!.uri.fsPath
+  let proPath, filePath
   const hasSrcDir = fsPath.includes('src')
+
   if (!hasSrcDir) {
-    proPath = getParentDirPath(fsPath)
-    filePath = fsPath.split('/').pop()
+    const uri = Uri.file(fsPath)
+    proPath = uri.with({ path: uri.path.substring(0, uri.path.lastIndexOf('/')) }).fsPath
+    filePath = uri.path.substring(uri.path.lastIndexOf('/') + 1)
   }
   else {
-    const srcPath = getProjectDirPath(fsPath)
-    const hasWaModJson = fs.readdirSync(srcPath)?.includes('wa.mod.json') || fs.readdirSync(srcPath)?.includes('wa.mod')
-    if (!hasWaModJson) {
-      return window.showErrorMessage('wa.mod.json not found in the current directory.')
+    const srcPath = Uri.file(fsPath).with({ path: `${fsPath.split('/src')[0]}/` })
+    try {
+      const files = await workspace.fs.readDirectory(srcPath)
+      const hasWaModJson = files.some(([name]) => name === 'wa.mod')
+      if (!hasWaModJson) {
+        return window.showErrorMessage('wa.mod.json not found in the current directory.')
+      }
     }
-    const _filePath = getProjectDirPath(fsPath)
-    const path = fmtPath(_filePath)
-    proPath = path
-    filePath = path
+    catch (error) {
+      return window.showErrorMessage('Error reading the directory.')
+    }
+    proPath = srcPath.fsPath
+    filePath = srcPath.fsPath
   }
 
   const waRunTask = tasks.taskExecutions.find(task => task.task.name === 'wa run')

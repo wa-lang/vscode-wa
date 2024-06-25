@@ -28,18 +28,6 @@ export const fmtPath = (path: string) => {
   return path
 }
 
-export const getProjectDirPath = (path: string) => {
-  if (isWin) { return path.replace(/\\src\\.*$/, '\\') }
-
-  return path.replace(/\/src\/.*$/, '/')
-}
-
-export const getParentDirPath = (path: string) => {
-  if (isWin) { return path.replace(/\\[^\\]*$/, '') }
-
-  return path.replace(/\/[^\/]*$/, '')
-}
-
 async function createWaTerminal() {
   await commands.executeCommand('ms-vscode.webshell.create')
 

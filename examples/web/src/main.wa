@@ -1,7 +1,7 @@
 // 版权 @2024 web 作者。保留所有权利。
 
 func main {
-	println("你好，凹语言！")
+	println("你好，凹语言xxx！")
 	println(sum(100))
 }
 

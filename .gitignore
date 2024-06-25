@@ -18,6 +18,7 @@ node_modules
 
 # Build
 dist
+.vscode-test-web
 
 # Wa Result
 wat2wasm

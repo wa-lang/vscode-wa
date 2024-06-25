@@ -8,7 +8,7 @@ const getCodeLenses = (document: TextDocument): CodeLens[] => {
   const mainLine = lines.findIndex(line => /func main\s*[\(\{]/.test(line))
   if (mainLine !== -1) {
     codeLens.push(new CodeLens(document.lineAt(mainLine).range, {
-      title: 'Run',
+      title: '▷ Run',
       command: 'wa.runWaCode',
     }))
   }

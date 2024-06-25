@@ -1,3 +1,6 @@
 {
-  "extends": "@ohxxx"
+  "extends": "@ohxxx",
+  "rules": {
+    "@typescript-eslint/consistent-type-definitions": "off"
+  }
 }

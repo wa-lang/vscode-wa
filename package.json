@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {
@@ -12,13 +12,13 @@
   "bugs": {
     "url": "https://github.com/wa-lang/vscode-wa/issues"
   },
-  "browser": "./dist/extension.js",
   "categories": [
     "Snippets",
     "Programming Languages"
   ],
   "sideEffects": false,
   "main": "./dist/extension.js",
+  "browser": "./dist/extension.js",
   "icon": "assets/logo.png",
   "files": [
     "dist"
@@ -27,7 +27,7 @@
     "vscode": "^1.70.0"
   },
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "breakpoints": "wa",
   "contributes": {
@@ -107,6 +107,36 @@
     ],
     "commands": [
       {
+        "command": "wa.runWaBuild",
+        "title": "¹ Run Wa Build",
+        "category": "Wa"
+      },
+      {
+        "command": "wa.runWatToWasm",
+        "title": "² Run Wat To Wasm",
+        "category": "Wa"
+      },
+      {
+        "command": "wa.runWasm",
+        "title": "³ Run Wasm",
+        "category": "Wa"
+      },
+      {
+        "command": "wa.openWaPreview",
+        "title": "⁴ Open Wa Preview",
+        "category": "Wa"
+      },
+      {
+        "command": "wa.openWaTerminal",
+        "title": "Open Wa Terminal",
+        "category": "Wa"
+      },
+      {
+        "command": "wa.runWaFmt",
+        "title": "Run Wa Format",
+        "category": "Wa"
+      },
+      {
         "command": "wa.runWaCode",
         "title": "Run Wa Code",
         "category": "Wa"
@@ -121,8 +151,39 @@
     "menus": {
       "editor/context": [
         {
+          "command": "wa.runWaBuild",
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+        },
+        {
+          "command": "wa.runWatToWasm",
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+        },
+        {
+          "command": "wa.runWasm",
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+        },
+        {
+          "command": "wa.openWaPreview",
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+        },
+        {
+          "command": "wa.openWaTerminal",
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+        },
+        {
+          "command": "wa.runWaFmt",
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+        },
+        {
           "command": "wa.runWaCode",
-          "group": "navigation"
+          "group": "navigation",
+          "when": "editorLangId == 'wa' && !wa.isWeb && !wa.useWebShell"
         }
       ]
     },
@@ -134,26 +195,49 @@
           "type": "string",
           "default": null,
           "description": "Path to the wa executable."
+        },
+        "wa.useWebShell": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use web shell to run wa."
         }
       }
-    }
+    },
+    "webShellMountPoints": [
+      {
+        "mountPoint": "/usr/bin/wa",
+        "command": "wa.webshell.wa"
+      },
+      {
+        "mountPoint": "/usr/bin/wat2wasm",
+        "command": "wa.webshell.wat2wasm"
+      }
+    ]
   },
   "scripts": {
     "dev": "rm -rf dist && tsup --watch",
-    "dev:web": "rm -rf dist && tsup --watch",
     "build": "tsup",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "publish": "vsce publish --no-dependencies --allow-star-activation",
-    "pack": "vsce package --no-dependencies --allow-star-activation"
+    "pack": "vsce package --no-dependencies --allow-star-activation",
+    "serve": "npx serve --cors -l 5210 --ssl-cert $HOME/certs/localhost.pem --ssl-key $HOME/certs/localhost-key.pem",
+    "test:web": "vscode-test-web --extensionDevelopmentPath=. ./examples/web/ --extensionId=ms-vscode.wasm-wasi-core@prerelease --extensionId=ms-vscode.webshell@prerelease --printServerLog"
   },
+  "extensionDependencies": [
+    "ms-vscode.wasm-wasi-core",
+    "ms-vscode.webshell"
+  ],
   "devDependencies": {
     "@ohxxx/eslint-config": "^0.0.4",
     "@types/node": "^17.0.45",
     "@types/vscode": "^1.70.0",
+    "@vscode/test-web": "^0.0.54",
+    "@vscode/wasm-wasi": "0.13.0-pre.1",
     "eslint": "^8.31.0",
+    "nanoid": "^5.0.7",
     "tsup": "^5.12.9",
     "typescript": "^4.9.4",
     "vite": "^2.9.15",

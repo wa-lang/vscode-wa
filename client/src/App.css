@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 0;
+  background-color: #242424;
+}
+
+.wa-preview {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.wa-iframe {
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  border: none;
+}
+
+.wa-terminal {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+  position: absolute;
+}
+
+.wa-loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #242424;
+  z-index: 1;
+}
+
+.wa-loading-content,
+.wa-output-loading  {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wa-loading-content svg {
+  width: 100px;
+  height: 100px;
+}
+
+.wa-loading-content span {
+  margin-top: 16px;
+  font-size: 16px;
+  color: #21B2AA;
+  font-weight: 500;
+}

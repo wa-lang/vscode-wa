@@ -19,7 +19,7 @@ export const getRootPathConf = () => {
 
 export const getUseWebShellConf = () => {
   const conf = getExtensionsConf()
-  return conf?.useWebShell
+  return conf?.useWebShell || false
 }
 
 export const fmtPath = (path: string) => {

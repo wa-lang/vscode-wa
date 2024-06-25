@@ -15,9 +15,9 @@ yarn-error.log*
 # Dependency directories
 node_modules
 
-
 # Build
 dist
+*.vsix
 .vscode-test-web
 
 # Wa Result

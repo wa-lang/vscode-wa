@@ -9,7 +9,7 @@ import { waPreviewPanel } from './panel'
 
 export async function activate(context: ExtensionContext) {
   const isWeb = env.uiKind === UIKind.Web
-  const useWebShell = getUseWebShellConf() ?? false
+  const useWebShell = getUseWebShellConf()
 
   commands.executeCommand('setContext', 'wa-use-web-shell', useWebShell)
 
@@ -23,17 +23,21 @@ export async function activate(context: ExtensionContext) {
     const wasm = await Wasm.load()
     const modName = await getModName()
 
-    const disposables = [
+    context.subscriptions.push(
       commands.registerCommand(
         'wa.openWaPreview',
         async () => { return await waPreviewPanel(context) },
       ),
-      commands.registerCommand('wa.openWaTerminal', async () => {
-        await commands.executeCommand('ms-vscode.webshell.create')
-      }),
-      commands.registerCommand('wa.runWaBuild', async () => {
-        await sendTerminalCommand('wa build')
-      }),
+      commands.registerCommand('wa.openWaTerminal',
+        async () => {
+          await commands.executeCommand('ms-vscode.webshell.create')
+        },
+      ),
+      commands.registerCommand('wa.runWaBuild',
+        async () => {
+          await sendTerminalCommand('wa build')
+        },
+      ),
       commands.registerCommand(
         'wa.runWatToWasm',
         async () => {
@@ -63,15 +67,13 @@ export async function activate(context: ExtensionContext) {
         if (!path) { return }
         await sendTerminalCommand(`wa fmt ${path}`)
       }),
-    ] as const
-    context.subscriptions.push(...disposables)
+    )
   }
   else {
-    const disposables = [
+    context.subscriptions.push(
       commands.registerCommand('wa.runWaCode', runWaCode),
       workspace.onDidSaveTextDocument(fmtWaCode),
-    ] as const
-    context.subscriptions.push(...disposables)
+    )
   }
 }
 

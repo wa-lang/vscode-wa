@@ -17,6 +17,10 @@ export async function waPreviewPanel(context: ExtensionContext) {
   const scriptUri = Uri.joinPath(context.extensionUri, 'client/dist/assets/index.js')
 
   panel.webview.onDidReceiveMessage((message) => {
+    if (message.command === 'err-notify') {
+      window.showErrorMessage(message.text)
+      return
+    }
     window.showInformationMessage(message.text)
   })
 

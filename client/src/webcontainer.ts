@@ -9,27 +9,27 @@ import { files } from './files'
 let wc: WebContainer
 
 async function notifyVSCode(text: string) {
-  window.vscode.postMessage({ command: 'notify', text })
+  window.vscode.postMessage({ command: 'err-notify', text })
 }
 
-async function writeFileFromU8A(path: string, data: Uint8Array) {
+async function writeFileFromU8A(path: string, data: Uint8Array, encoding: string = 'utf-8') {
   try {
-    const content = new TextDecoder('utf-8').decode(data)
-    await wc.fs.writeFile(path, content, { encoding: 'utf-8' })
+    const content = new TextDecoder(encoding).decode(data)
+    await wc.fs.writeFile(path, content, { encoding })
   }
   catch (error) {
     notifyVSCode(`${path} failed to load, Please restart Wa Preview`)
   }
 }
 
-async function compileWatToWasm(watName: string, watContent: Uint8Array): Promise<{ name: string, data: Uint8Array } | undefined>{
+async function compileWatToWasm(watName: string, watContent: Uint8Array) {
   try {
     const wabt = await WabtModule()
     const wat = new TextDecoder('utf-8').decode(watContent)
     const parsed = wabt.parseWat(`${watName}.wat`, wat)
     const { buffer } = parsed.toBinary({})
     const wasm = new Uint8Array(buffer)
-    return { name: `${watName}.wasm`, data: wasm }
+    await wc.fs.writeFile(`/${watName}.wasm`, wasm, { encoding: 'utf-8' })
   }
   catch (error) {
     notifyVSCode(`Wasm loading failed, Please restart Wa Preview`)
@@ -122,18 +122,12 @@ export default async function webContainer(
 
   try {
     // TODO: Getting data using the publish-subscribe model
+    const watFile = window.outputFiles.find(({ name }: any) => name.endsWith('.wat')) as { name: string, data: number[] }
+    await compileWatToWasm(`${(watFile.name).replace('.wat', '')}`, new Uint8Array(watFile.data))
+
     for (const { name, data } of window.outputFiles) {
       await writeFileFromU8A(`/${name}`, new Uint8Array(data))
     }
-
-    const watFile = window.outputFiles.find(({ name }: any) => name.endsWith('.wat')) as { name: string, data: number[] }
-    const wasmContent = await compileWatToWasm(`${(watFile.name).replace('.wat', '')}`, new Uint8Array(watFile.data))
-    if (!wasmContent) {
-      notifyVSCode('Wasm loading failed, Please restart Wa Preview')
-      return
-    }
-    await writeFileFromU8A(`/${wasmContent.name}.wasm`, wasmContent.data)
-
   }
   catch (error) {
     notifyVSCode('File loading failed, Please restart Wa Preview')

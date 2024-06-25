@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {
@@ -153,37 +153,37 @@
         {
           "command": "wa.runWaBuild",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+          "when": "editorLangId == wa && (isWeb || wa-use-web-shell)"
         },
         {
           "command": "wa.runWatToWasm",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+          "when": "editorLangId == wa && (isWeb || wa-use-web-shell)"
         },
         {
           "command": "wa.runWasm",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+          "when": "editorLangId == wa && (isWeb || wa-use-web-shell)"
         },
         {
           "command": "wa.openWaPreview",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+          "when": "editorLangId == wa && (isWeb || wa-use-web-shell)"
         },
         {
           "command": "wa.openWaTerminal",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+          "when": "editorLangId == wa && (isWeb || wa-use-web-shell)"
         },
         {
           "command": "wa.runWaFmt",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && (wa.isWeb || wa.useWebShell)"
+          "when": "editorLangId == wa && (isWeb || wa-use-web-shell)"
         },
         {
           "command": "wa.runWaCode",
           "group": "navigation",
-          "when": "editorLangId == 'wa' && !wa.isWeb && !wa.useWebShell"
+          "when": "editorLangId == wa && !isWeb && !wa-use-web-shell"
         }
       ]
     },

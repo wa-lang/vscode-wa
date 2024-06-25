@@ -11,12 +11,11 @@ export async function activate(context: ExtensionContext) {
   const isWeb = env.uiKind === UIKind.Web
   const useWebShell = getUseWebShellConf() ?? false
 
-  commands.executeCommand('setContext', 'wa.isWeb', isWeb)
-  commands.executeCommand('setContext', 'wa.useWebShell', useWebShell)
+  commands.executeCommand('setContext', 'wa-use-web-shell', useWebShell)
 
   context.subscriptions.push(
     languages.registerCodeLensProvider({ scheme: 'file', language: 'wa' },
-      !isWeb && !useWebShell ? codeLensProvider() : { provideCodeLenses: () => [] },
+      !isWeb ? codeLensProvider() : { provideCodeLenses: () => [] },
     ),
   )
 

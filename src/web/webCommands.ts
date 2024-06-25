@@ -1,7 +1,7 @@
 import type { ExtensionContext } from 'vscode'
 import { commands } from 'vscode'
 import { Wasm } from '@vscode/wasm-wasi'
-import { getActiveFilePath, getModName, runWasmCommand, sendTerminalCommand } from '../helpers'
+import { getActiveFilePath, getModName, runWasmCommand, sendTerminalCommand } from './helpers'
 import { waPreviewPanel } from './panel'
 
 export const webCommands = async (context: ExtensionContext) => {

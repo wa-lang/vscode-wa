@@ -23,5 +23,4 @@ dist
 # Wa Result
 wat2wasm
 a.out.wat
-examples/**/output/*.wat
-examples/**/output/*.wasm
+examples/**/output/

@@ -28,7 +28,19 @@ export const fmtPath = (path: string) => {
   return path
 }
 
-async function createWaTerminal() {
+export const getProjectDirPath = (path: string) => {
+  if (isWin) { return path.replace(/\\src\\.*$/, '\\') }
+
+  return path.replace(/\/src\/.*$/, '/')
+}
+
+export const getParentDirPath = (path: string) => {
+  if (isWin) { return path.replace(/\\[^\\]*$/, '') }
+
+  return path.replace(/\/[^\/]*$/, '')
+}
+
+const createWaTerminal = async () => {
   await commands.executeCommand('ms-vscode.webshell.create')
 
   const terminals = window.terminals
@@ -46,7 +58,7 @@ async function createWaTerminal() {
   return terminal
 }
 
-export async function sendTerminalCommand(command: string) {
+export const sendTerminalCommand = async (command: string) => {
   const terminal = await createWaTerminal()
   if (terminal) {
     terminal.sendText(command)
@@ -54,7 +66,7 @@ export async function sendTerminalCommand(command: string) {
   }
 }
 
-export function getActiveFilePath(): string | null {
+export const getActiveFilePath = (): string | null => {
   const document = window.activeTextEditor?.document
   if (!document) { return null }
   const path = document.uri.fsPath
@@ -65,7 +77,7 @@ export function getActiveFilePath(): string | null {
   return `.${path.slice(srcIndex)}`
 }
 
-export async function runWasmCommand(
+export const runWasmCommand = async (
   wasm: Wasm,
   context: ExtensionContext,
   commandName: string,
@@ -73,7 +85,7 @@ export async function runWasmCommand(
   args: string[],
   stdio: Stdio,
   rootFileSystem: RootFileSystem,
-): Promise<number> {
+): Promise<number> => {
   const options: ProcessOptions = { stdio, rootFileSystem, args, trace: true }
   const filename = Uri.joinPath(context.extensionUri, 'assets', wasmFileName)
   const bits = await workspace.fs.readFile(filename)
@@ -84,7 +96,7 @@ export async function runWasmCommand(
   return process.run()
 }
 
-export async function getModName() {
+export const getModName = async () => {
   const modPath = Uri.joinPath(workspace.workspaceFolders![0].uri, 'wa.mod')
   const modBuffer = (await workspace.fs.readFile(modPath)).buffer
   const modContentStr = Array.from(new Uint8Array(modBuffer)).map(byte => String.fromCharCode(byte)).join('')

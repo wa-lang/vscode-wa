@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {
@@ -18,7 +18,7 @@
   ],
   "sideEffects": false,
   "main": "./dist/extension.js",
-  "browser": "./dist/extension.js",
+  "browser": "./dist/web-extension.js",
   "icon": "assets/logo.png",
   "files": [
     "dist"

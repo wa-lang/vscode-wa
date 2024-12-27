@@ -2,7 +2,7 @@
   "publisher": "xxxDeveloper",
   "name": "vscode-wa",
   "displayName": "Wa",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Wa Lang for VS Code",
   "homepage": "https://github.com/wa-lang/vscode-wa#readme",
   "repository": {
@@ -225,10 +225,7 @@
     "serve": "npx serve --cors -l 5210 --ssl-cert $HOME/certs/localhost.pem --ssl-key $HOME/certs/localhost-key.pem",
     "test:web": "vscode-test-web --extensionDevelopmentPath=. ./examples/web/ --extensionId=ms-vscode.wasm-wasi-core@prerelease --extensionId=ms-vscode.webshell@prerelease --printServerLog"
   },
-  "extensionDependencies": [
-    "ms-vscode.wasm-wasi-core",
-    "ms-vscode.webshell"
-  ],
+  "extensionDependencies": [],
   "devDependencies": {
     "@ohxxx/eslint-config": "^0.0.4",
     "@types/node": "^20.14.2",

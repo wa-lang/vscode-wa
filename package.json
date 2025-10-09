@@ -84,6 +84,11 @@
         "path": "./syntaxes/wa.tmLanguage.json"
       },
       {
+        "language": "wz",
+        "scopeName": "source.wz",
+        "path": "./syntaxes/wz.tmLanguage.json"
+      },
+      {
         "language": "wa.mod",
         "scopeName": "source.wa.mod",
         "path": "./syntaxes/wa.mod.tmLanguage.json"
